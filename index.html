@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./image-slot.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Brand override: Inácio Engenharia's own cyan + green replace the design system's
+       mono steel-blue accent — same ramp structure (100-900), token names unchanged. */
+    :root {
+      --color-accent: #00a7c9; --color-accent-100: #e6fbff; --color-accent-200: #c0f3fd;
+      --color-accent-300: #8ee6f7; --color-accent-400: #57d2ea; --color-accent-500: #22bce0;
+      --color-accent-600: #0092b0; --color-accent-700: #0c7c98; --color-accent-800: #0c5b70;
+      --color-accent-900: #0d3944;
+      --color-accent-2: #0d8a0d; --color-accent-2-100: #e7f7e7; --color-accent-2-200: #c3ecc3;
+      --color-accent-2-300: #8ed88e; --color-accent-2-400: #4dbd4d; --color-accent-2-500: #1e9e1e;
+      --color-accent-2-600: #0d8a0d; --color-accent-2-700: #0a6b0a; --color-accent-2-800: #0a4f0a;
+      --color-accent-2-900: #0a3011;
+    }
+    @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--color-accent-2) 45%, transparent)} 100%{box-shadow:0 0 0 14px transparent} }
+    body { background: var(--color-bg); overflow-x: hidden; }
+    a { color: var(--color-accent-700); }
+    a:hover { color: var(--color-accent-900); }
+    .container { max-width: 1180px; margin: 0 auto; padding-inline: var(--space-6); }
+    .plate { background: var(--color-bg); border: 1px solid var(--color-divider); }
+    section[data-screen-label] { position: relative; }
+    .btn-whatsapp { background: var(--color-accent-2); border-color: var(--color-accent-2) !important; color: #fff; }
+    .btn-whatsapp:hover { background: var(--color-accent-2-700); }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column">
+
+  <!-- NAV -->
+  <header class="nav" data-screen-label="Nav" style="position:sticky;top:0;z-index:40;background:color-mix(in srgb, var(--color-bg) 92%, transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--color-divider)">
+    <div class="container" style="display:flex;align-items:center;gap:var(--space-6);width:100%">
+      <div class="nav-brand" style="display:flex;align-items:center">
+        <img src="./assets/logo-inacio.png" alt="Inácio Engenharia" style="height:30px;width:auto;display:block">
+      </div>
+      <nav style="display:flex;gap:var(--space-6);margin-left:auto" class="nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-whatsapp" href="{{ waLinkNav }}" target="_blank" rel="noopener" style="flex:none">
+        <img src="./assets/whatsapp-icon.png" alt="" style="width:17px;height:17px;display:block">
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="padding:calc(var(--space-8)*2) 0 var(--space-8)">
+    <div class="container" style="display:grid;grid-template-columns:1.05fr 1fr;gap:var(--space-8);align-items:center">
+      <div>
+        <span class="tag tag-outline" style="margin-bottom:var(--space-4)">Engenharia ambiental · Todo o Brasil</span>
+        <h1 style="font-size:52px;max-width:560px;text-wrap:pretty">Soluções em tratamento de efluentes e instalação de geomembrana PEAD</h1>
+        <p style="font-size:17px;max-width:520px;opacity:.85;text-wrap:pretty">Combinamos expertise em tratamento de efluentes com proficiência em soldagem de geomembrana PEAD, entregando reservatórios seguros e biodigestores prontos para operar — com equipe altamente capacitada e garantia de serviço, do diagnóstico ao acompanhamento.</p>
+        <div style="display:flex;gap:var(--space-3);margin-top:var(--space-6);flex-wrap:wrap">
+          <a class="btn btn-whatsapp" href="{{ waLinkHero }}" target="_blank" rel="noopener" style="padding:14px 24px;font-size:15px">
+            <img src="./assets/whatsapp-icon.png" alt="" style="width:19px;height:19px;display:block">
+            Solicitar orçamento no WhatsApp
+          </a>
+          <a class="btn btn-secondary" href="#projetos" style="padding:14px 24px;font-size:15px">Ver projetos executados</a>
+        </div>
+      </div>
+
+      <div class="blueprint" style="aspect-ratio:4/3;min-width:0">
+                <div style="position:absolute;inset:0">
+          <image-slot id="hero-photo" shape="rect" placeholder="Foto: instalação de geomembrana / biodigestor em campo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div class="plate elev-md" style="position:absolute;left:var(--space-4);bottom:calc(var(--space-4) * -1);right:var(--space-4);padding:var(--space-3) var(--space-4);display:flex;justify-content:space-between;gap:var(--space-3)">
+          <div><div style="font-family:var(--font-heading);font-size:15px;font-weight:600;color:var(--color-accent-800);line-height:1.2">Impermeabilização</div><div style="font-size:11px;opacity:.65">Instalação de geomembrana PEAD</div></div>
+          <div style="width:1px;background:var(--color-divider)"></div>
+          <div><div style="font-family:var(--font-heading);font-size:15px;font-weight:600;color:var(--color-accent-2-800);line-height:1.2">Biodigestor e biogás</div><div style="font-size:11px;opacity:.65">Projeto e instalação completa</div></div>
+          <div style="width:1px;background:var(--color-divider)"></div>
+          <div><div style="font-family:var(--font-heading);font-size:15px;font-weight:600;color:var(--color-accent-800);line-height:1.2">Manutenções</div><div style="font-size:11px;opacity:.65">Geomembrana PEAD e biodigestores</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / DIFERENCIAIS -->
+  <section data-screen-label="Diferenciais" style="padding:calc(var(--space-8)*1.6) 0 var(--space-8)">
+    <div class="container" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--color-divider)">
+      <sc-for list="{{ diferenciais }}" as="item" hint-placeholder-count="4">
+        <div style="padding:var(--space-6) var(--space-4);border-right:1px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-2)">
+          <div style="color:var(--color-accent);font-size:22px">{{ item.icon }}</div>
+          <div style="font-family:var(--font-heading);font-weight:600;font-size:16px">{{ item.title }}</div>
+          <div style="font-size:13px;opacity:.7">{{ item.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" data-screen-label="Serviços" style="padding:var(--space-8) 0 calc(var(--space-8)*1.5)">
+    <div class="container">
+      <div style="max-width:600px;margin-bottom:var(--space-8)">
+        <span class="tag tag-accent">Serviços</span>
+        <h2 style="margin-top:var(--space-2)">Duas frentes técnicas, uma só operação</h2>
+        <p style="opacity:.75">Combinamos expertise em tratamento de efluentes com proficiência em soldagem de geomembrana PEAD para entregar soluções completas de gerenciamento de resíduos líquidos.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)">
+
+        <div class="blueprint plate" style="padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)">
+                    <div style="width:40px;height:40px;border:1.5px solid var(--color-accent);display:grid;place-items:center;color:var(--color-accent)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 15c4-2 8-2 12 0s6 2 6 2M2 19h20"></path><path d="M4 15V6h16v9"></path></svg>
+          </div>
+          <h3 style="margin:0">Instalação de geomembrana PEAD</h3>
+          <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;opacity:.85">
+            <li>Atende à Recomendação GRI GM-13, com alto controle de gases e líquidos</li>
+            <li>Elevada resistência química, mecânica e ao intemperismo (UV)</li>
+            <li>Impermeabilização de aterros, lagos artificiais, barragens de rejeito, canais e diques de contenção</li>
+            <li>Soldagem técnica precisa e livre de vazamentos</li>
+          </ul>
+          <a class="btn btn-secondary" href="{{ waLinkGeomembrana }}" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start">Falar sobre geomembrana</a>
+        </div>
+
+        <div class="blueprint plate" style="padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)">
+                    <div style="width:40px;height:40px;border:1.5px solid var(--color-accent);display:grid;place-items:center;color:var(--color-accent)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+          </div>
+          <h3 style="margin:0">Tratamento de efluentes e biodigestores</h3>
+          <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:14px;opacity:.85">
+            <li>Biodigestores e lagoas para bovinocultura, avicultura e suinocultura</li>
+            <li>Conversão de dejetos em biogás e biofertilizante</li>
+            <li>Soluções personalizadas para o setor alimentício</li>
+            <li>Gestão sustentável de resíduos líquidos e sólidos</li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="tag tag-accent-2">Bovinocultura</span>
+            <span class="tag tag-accent-2">Avicultura</span>
+            <span class="tag tag-accent-2">Suinocultura</span>
+            <span class="tag tag-accent-2">Setor alimentício</span>
+          </div>
+          <a class="btn btn-secondary" href="{{ waLinkBiodigestor }}" target="_blank" rel="noopener" style="margin-top:auto;align-self:flex-start">Falar sobre biodigestores</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section id="processo" data-screen-label="Processo" style="padding:var(--space-8) 0;background:var(--color-surface)">
+    <div class="container">
+      <div style="max-width:600px;margin-bottom:var(--space-8)">
+        <span class="tag tag-accent-2">Como funciona</span>
+        <h2 style="margin-top:var(--space-2)">Do diagnóstico à garantia, em quatro etapas</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)">
+        <sc-for list="{{ processo }}" as="step" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+            <div style="font-family:var(--font-heading);font-size:34px;font-weight:600;color:var(--color-accent-300);line-height:1">{{ step.n }}</div>
+            <div style="font-family:var(--font-heading);font-weight:600;font-size:17px">{{ step.title }}</div>
+            <div style="font-size:13px;opacity:.7">{{ step.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  
+
+  <!-- FAQ -->
+  <section id="projetos" data-screen-label="Galeria de projetos" style="padding:var(--space-8) 0 calc(var(--space-8)*1.5)">
+    <div class="container">
+      <div style="max-width:600px;margin-bottom:var(--space-8)">
+        <span class="tag tag-accent">Projetos</span>
+        <h2 style="margin-top:var(--space-2)">Obras executadas em campo</h2>
+        <p style="opacity:.75">Registro fotográfico de instalações de geomembrana e biodigestores em operação.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6)">
+        <sc-for list="{{ galeria }}" as="proj" hint-placeholder-count="6">
+          <figure class="blueprint" style="margin:0;aspect-ratio:4/3">
+                        <div style="position:absolute;inset:0">
+              <image-slot id="{{ proj.id }}" shape="rect" placeholder="{{ proj.placeholder }}" style="width:100%;height:100%"></image-slot>
+            </div>
+            <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:var(--space-2) var(--space-3);background:color-mix(in srgb, var(--color-bg) 85%, transparent)">{{ proj.caption }}</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section><section id="faq" data-screen-label="FAQ" style="padding:var(--space-8) 0 calc(var(--space-8)*1.6)">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1.4fr;gap:var(--space-8)">
+      <div>
+        <span class="tag tag-accent-2">Perguntas frequentes</span>
+        <h2 style="margin-top:var(--space-2)">Ainda com dúvidas?</h2>
+        <p style="opacity:.75">Fale com nossa equipe técnica pelo WhatsApp para uma resposta direta sobre seu projeto.</p>
+        <a class="btn btn-whatsapp" href="{{ waLinkFaq }}" target="_blank" rel="noopener" style="margin-top:var(--space-3)">Tirar dúvidas agora</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ faq }}" as="item" hint-placeholder-count="5">
+          <details style="border-bottom:1px solid var(--color-divider);padding:var(--space-4) 0">
+            <summary style="cursor:pointer;font-family:var(--font-heading);font-weight:600;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--space-3)">
+              {{ item.q }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="flex:none;color:var(--color-accent)"><path d="M6 9l6 6 6-6"></path></svg>
+            </summary>
+            <p style="margin:var(--space-3) 0 0;font-size:14px;opacity:.8;max-width:520px">{{ item.a }}</p>
+          </details>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section data-screen-label="CTA final" style="background:var(--color-accent-2-900);color:var(--color-bg);padding:calc(var(--space-8)*1.6) 0">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap">
+      <div style="max-width:560px">
+        <h2 style="color:var(--color-bg);margin-bottom:var(--space-2)">Transformando problemas em negócios lucrativos, enquanto contribuímos para um futuro sustentável</h2>
+        <p style="opacity:.75;margin:0">Entre em contato hoje mesmo e descubra como a Inácio Engenharia pode realizar o melhor projeto para sua propriedade.</p>
+      </div>
+      <a href="{{ waLinkCta }}" target="_blank" rel="noopener" class="btn" style="background:var(--color-bg);color:var(--color-accent-2-900);border-color:var(--color-bg);padding:16px 28px;font-size:15px">
+        <img src="./assets/whatsapp-icon.png" alt="" style="width:19px;height:19px;display:block">
+        Falar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer data-screen-label="Footer" style="padding:var(--space-6) 0;background:var(--color-bg)">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap;border-top:1px solid var(--color-divider);padding-top:var(--space-4)">
+      <img src="./assets/logo-inacio.png" alt="Inácio Engenharia" style="height:24px;width:auto;display:block">
+      <div style="font-size:12px;opacity:.7;display:flex;gap:var(--space-4);flex-wrap:wrap">
+        <span>(34) 9 9144-8876</span>
+        <span>kaique@inacioengenharia.com.br</span>
+        <span>@inacioengenharia</span>
+      </div>
+      <div style="font-size:12px;opacity:.6">© 2026 Inácio Engenharia. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="{{ waLinkFloat }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" style="position:fixed;right:24px;bottom:24px;z-index:50;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;animation:pulse-ring 2.2s infinite">
+    <img src="./assets/whatsapp-icon.png" alt="WhatsApp" style="width:100%;height:100%;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))">
+  </a>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5534991448876&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;whatsappMessage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Olá! Quero solicitar um orçamento&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const number = (this.props.whatsappNumber ?? '5511999999999').replace(/\D/g, '');
+    const wa = (msg) => `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+    const baseMsg = this.props.whatsappMessage ?? 'Olá! Quero solicitar um orçamento com a Inácio Engenharia.';
+
+    return {
+      waLinkNav: wa(baseMsg),
+      waLinkHero: wa(baseMsg),
+      waLinkFloat: wa(baseMsg),
+      waLinkFaq: wa(baseMsg),
+      waLinkCta: wa(baseMsg),
+      waLinkGeomembrana: wa('Olá! Gostaria de um orçamento para instalação de geomembrana PEAD.'),
+      waLinkBiodigestor: wa('Olá! Gostaria de um orçamento para projeto de biodigestor.'),
+
+      diferenciais: [
+        { icon: '👥', title: 'Equipe capacitada', desc: 'Equipe própria, altamente capacitada e experiente em cada etapa da obra.' },
+        { icon: '🛡', title: 'Garantia de serviço', desc: 'Confiabilidade do início ao fim, com serviços de alta qualidade.' },
+        { icon: '📍', title: 'Atendimento nacional', desc: 'Projetos em propriedades agroindustriais em todo o Brasil.' },
+        { icon: '⚙', title: 'Biodigestores próprios', desc: 'Projeto e instalação completa, combinando tratamento de efluentes e soldagem PEAD.' },
+      ],
+
+      processo: [
+        { n: '01', title: 'Diagnóstico', desc: 'Levantamento das condições do terreno e da operação com o cliente.' },
+        { n: '02', title: 'Projeto técnico', desc: 'Dimensionamento da solução de geomembrana ou biodigestor.' },
+        { n: '03', title: 'Instalação', desc: 'Execução em campo com equipe própria e controle de qualidade de solda.' },
+        { n: '04', title: 'Garantia', desc: 'Acompanhamento pós-entrega e cobertura de garantia sobre o serviço.' },
+      ],
+
+      galeria: [
+        { id: 'proj-1', placeholder: 'Foto: biodigestor circular de confinamento bovino', caption: 'Biodigestor circular — confinamento bovino' },
+        { id: 'proj-2', placeholder: 'Foto: cúpula de biodigestor recém instalada', caption: 'Cúpula de biodigestor recém-instalada' },
+        { id: 'proj-3', placeholder: 'Foto: reservatório de homogeneização de dejeto suíno', caption: 'Reservatório de homogeneização — dejeto suíno' },
+        { id: 'proj-4', placeholder: 'Foto: lagoa PEAD para dejeto suíno, lona e misto', caption: 'Lagoa PEAD dejeto suíno — lona e misto' },
+        { id: 'proj-5', placeholder: 'Foto: instalação de geomembrana em reservatório de irrigação', caption: 'Instalação de geomembrana — reservatório de irrigação' },
+        { id: 'proj-6', placeholder: 'Foto: impermeabilização de piscinão de irrigação', caption: 'Impermeabilização — piscinão de irrigação' },
+      ],
+
+      faq: [
+        { q: 'A Inácio atende quais atividades?', a: 'Atendemos bovinocultura (leite e corte), avicultura, suinocultura e o setor alimentício, com biodigestores e lagoas sob medida para cada operação.' },
+        { q: 'Vocês fazem só a instalação ou também o projeto do biodigestor?', a: 'As duas coisas: nossa equipe projeta e dimensiona o biodigestor de acordo com sua operação, e também executa a instalação completa.' },
+        { q: 'Qual norma técnica a geomembrana atende?', a: 'Nossas geomembranas PEAD atendem à Recomendação GRI GM-13, com alto controle de gases e líquidos e resistência a UV.' },
+        { q: 'Onde a Inácio atua?', a: 'Atendemos propriedades agroindustriais em todo o Brasil.' },
+        { q: 'Como solicito um orçamento?', a: 'O caminho mais rápido é falar diretamente com nossa equipe pelo WhatsApp, pelo (34) 9 9144-8876.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
