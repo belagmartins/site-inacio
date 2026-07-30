@@ -33,6 +33,42 @@
     section[data-screen-label] { position: relative; }
     .btn-whatsapp { background: var(--color-accent-2); border-color: var(--color-accent-2) !important; color: #fff; }
     .btn-whatsapp:hover { background: var(--color-accent-2-700); }
+
+    /* ── Responsivo (mobile/tablet) ──────────────────────────────────────
+       As grades desta página usam grid-template-columns fixo via style
+       inline, então os ajustes abaixo precisam de !important para vencer. */
+    @media (max-width: 760px) {
+      header.nav > .container { flex-wrap: wrap; row-gap: var(--space-3); }
+      header.nav nav.nav {
+        width: 100%; order: 3; margin-left: 0 !important;
+        justify-content: center; flex-wrap: wrap; gap: var(--space-4);
+      }
+
+      section[data-screen-label="Hero"] > .container { grid-template-columns: 1fr !important; }
+      section[data-screen-label="Hero"] h1 { font-size: 32px !important; }
+      section[data-screen-label="Hero"] .blueprint { margin-top: var(--space-6); }
+
+      section[data-screen-label="Diferenciais"] > .container { grid-template-columns: repeat(2, 1fr) !important; }
+
+      section[data-screen-label="Serviços"] > .container > div:nth-of-type(2) { grid-template-columns: 1fr !important; }
+
+      section[data-screen-label="Processo"] > .container > div:nth-of-type(2) { grid-template-columns: repeat(2, 1fr) !important; }
+
+      section[data-screen-label="Galeria de projetos"] > .container > div:nth-of-type(2) { grid-template-columns: repeat(2, 1fr) !important; }
+
+      section[data-screen-label="FAQ"] > .container { grid-template-columns: 1fr !important; gap: var(--space-6) !important; }
+
+      h2 { font-size: 26px !important; }
+    }
+
+    @media (max-width: 480px) {
+      section[data-screen-label="Diferenciais"] > .container,
+      section[data-screen-label="Processo"] > .container > div:nth-of-type(2),
+      section[data-screen-label="Galeria de projetos"] > .container > div:nth-of-type(2) {
+        grid-template-columns: 1fr !important;
+      }
+      section[data-screen-label="Hero"] h1 { font-size: 28px !important; }
+    }
   </style>
 </helmet>
 
